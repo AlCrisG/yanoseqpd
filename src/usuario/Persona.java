@@ -123,6 +123,9 @@ public class Persona{
         this.estado = estado;
     }
 
+    public LocalDate getFechaRegistro(){
+        return fechaRegistro;
+    }
 
     private Estado obtenerEstado(int option){
         Estado estado = null;

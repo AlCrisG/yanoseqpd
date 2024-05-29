@@ -1,6 +1,6 @@
 package usuario.utils;
 
-public enum Grupo {
+public enum GrupoEnum {
     A,
     B
 }

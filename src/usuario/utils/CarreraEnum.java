@@ -1,6 +1,6 @@
 package usuario.utils;
 
-public enum Carrera {
+public enum CarreraEnum {
     Sistemas,
     Materiales,
     Electronica
