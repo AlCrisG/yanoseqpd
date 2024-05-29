@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import escuela.Carrera;
+import escuela.Escuela;
 import escuela.Grupo;
 import escuela.Semestre;
 import usuario.utils.CarreraEnum;
@@ -12,21 +13,20 @@ import usuario.utils.GrupoEnum;
 import usuario.utils.Rol;
 
 public class Alumno extends Persona{
-    private Carrera carrera;
+    private CarreraEnum carrera;
     private Semestre semestre;
     private Grupo grupo;
     private double promedio;
     private String numControl;
 
     public Alumno(String nombre, String apellidoPaterno, String apellidoMaterno, String fecha, String genero, String estado, String ciudad, String direccion,
-    String nombreUsuario, String contrasena, Rol rol, Carrera carrera, Semestre semestre, Grupo grupo){
+    String nombreUsuario, String contrasena, Rol rol, CarreraEnum carrera, Grupo grupo){
         super(nombre, apellidoPaterno, apellidoMaterno, fecha, genero, estado, ciudad, direccion, nombreUsuario, contrasena, Rol.Alumno);
         this.carrera = carrera;
-        this.semestre = semestre;
         this.grupo = grupo;
     }
 
-    public void agregarAlumno(){
+    public static void agregarAlumno(CarreraEnum carreraEnum){
         ArrayList<String> datosComun = DatosComun.obtenerDatosComun();
         String nombre = datosComun.get(0);
         String apellidoPaterno = datosComun.get(1);
@@ -39,37 +39,32 @@ public class Alumno extends Persona{
         String nombreUsuario = datosComun.get(8);
         String contrasena = datosComun.get(9);
 
-        
-        Scanner leerCad = new Scanner(System.in);
-        System.out.println("Ingrese la carrera del alumno: ");
-        System.out.println("1. Sistemas Computacionales");
-        System.out.println("2. Materiales");
-        System.out.println("3. Electrónica");
-        System.out.println("SU ELECCIÓN: ");
-        String opcionCarrera = leerCad.nextLine();
+        CarreraEnum carrera = carreraEnum;
 
-        switch(opcionCarrera){
-            case "1":
-            
-        }
+        Grupo grupo = null;
+        
+        Alumno alumno = new Alumno(nombre, apellidoPaterno, apellidoMaterno, fecha, genero, estado, ciudad, direccion, nombreUsuario, contrasena, 
+        Rol.Alumno, carrera, grupo);
+        Escuela.usuarios.get(Rol.Alumno).add(alumno);
+        alumno.setNumControl(generarNumControl(alumno));
     }
 
-    public String generarNumControl(Alumno alumno){
+    public static String generarNumControl(Alumno alumno){
         String letraNombre = Character.toString(alumno.getNombre().charAt(0));
         String digitosAnio = Integer.toString(alumno.getFechaRegistro().getYear());
         digitosAnio = digitosAnio.substring(2);
         String abreviacion = "";
-        switch(alumno.getCarrera().getNombreCarrera()){
+        switch(alumno.getCarrera()){
             case Sistemas -> abreviacion = "ISC";
             case Materiales -> abreviacion = "IMAT";
             case Electronica -> abreviacion = "ELC";
         }
         String indice = Integer.toString(alumno.getId());
 
-        return "I" + letraNombre + digitosAnio + abreviacion + indice;
+        return "l" + letraNombre + digitosAnio + abreviacion + indice;
     }
 
-    public Carrera getCarrera(){
+    public CarreraEnum getCarrera(){
         return carrera;
     }
 

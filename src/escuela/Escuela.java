@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import usuario.Persona;
+import usuario.utils.CarreraEnum;
 import usuario.utils.Rol;
 
 public class Escuela {
     
     public static HashMap<Rol, ArrayList<Persona>> usuarios = new HashMap<>();
+    public static ArrayList<Carrera> carreras = new ArrayList<>();
 
     public Escuela(){
         usuarios.put(Rol.Alumno, new ArrayList<>());
@@ -34,5 +36,13 @@ public class Escuela {
             }
         }
         return null;
+    }
+
+    public Carrera getCarrera(CarreraEnum carreraEnum){
+        for(Carrera carrera : carreras){
+            if(carrera.getNombreCarrera().equals(carreraEnum)){
+                return carrera;
+            }
+        }
     }
 }
