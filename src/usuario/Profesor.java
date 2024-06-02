@@ -1,12 +1,7 @@
 package usuario;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.swing.text.Caret;
-
-import escuela.Carrera;
 import escuela.Escuela;
 import usuario.utils.CarreraEnum;
 import usuario.utils.DatosComun;
@@ -15,7 +10,6 @@ import usuario.utils.Rol;
 
 public class Profesor extends Persona{
     private static Scanner leerNumeros = new Scanner(System.in);
-    private static Scanner leerCadenas = new Scanner(System.in);
     private static double salario;
     private String numControl;
     private String rfc;

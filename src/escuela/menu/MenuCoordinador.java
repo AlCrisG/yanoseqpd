@@ -5,7 +5,6 @@ import java.util.Scanner;
 import usuario.Alumno;
 import usuario.Coordinador;
 import usuario.Profesor;
-import usuario.utils.CarreraEnum;
 import usuario.utils.UsuarioEnSesion;
 
 public class MenuCoordinador {

@@ -1,6 +1,4 @@
 package usuario;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,7 +10,6 @@ import usuario.utils.Rol;
 
 public class Coordinador extends Persona{
     private static Scanner leerNumeros = new Scanner(System.in);
-    private static Scanner leerCadenas = new Scanner(System.in);
    
     private double salario;
     private String rfc;
