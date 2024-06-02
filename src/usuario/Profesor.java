@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.text.Caret;
+
+import escuela.Carrera;
 import escuela.Escuela;
 import usuario.utils.CarreraEnum;
 import usuario.utils.DatosComun;
@@ -90,5 +93,154 @@ public class Profesor extends Persona{
 
     public void setRfc(String rfc){
         this.rfc = rfc;
+    }
+
+    public String getNumControl (){
+        return numControl;
+    }
+
+    public String getRfc (){
+        return rfc;
+    }
+
+    
+    public static void mostrarInformacionTodosMaestros(CarreraEnum carreraEnum){
+        int cont = 0;
+        if(Escuela.usuarios.get(Rol.Profesor).isEmpty()){
+            System.out.println("No se han agregado usuarios de dicho rol.");
+        }
+        else{
+            for(Persona persona : Escuela.usuarios.get(Rol.Profesor)){
+                Profesor profesor = (Profesor) persona;
+                if(profesor.getCarreraEnum() == carreraEnum){
+                    Persona.mostrarInformacion(persona);
+                    System.out.printf("Fecha de registro: %s%n", profesor.getFechaRegistro());
+                    cont++;
+                }
+            }
+            if(cont == 0){
+                System.out.println("No se han agregado usuarios de dicho rol.");
+            } else{
+                System.out.println("======================================================");
+            }
+        }
+
+    }
+
+
+    public static void consultarMaestroPorNC( CarreraEnum carreraEnum) {
+        @SuppressWarnings("resource")
+        Scanner leerCadenas = new Scanner(System.in);
+
+        System.out.println("Ingrese el NC del maestro a consultar: ");
+        String numControl = leerCadenas.nextLine();
+
+        for (Persona usuario : Escuela.usuarios.get(Rol.Profesor)) {
+            if (usuario instanceof Profesor && ((Profesor)usuario).getNumControl() == numControl && ((Profesor)usuario).getCarreraEnum().equals(carreraEnum)) {
+                Profesor profesor = (Profesor) usuario;
+                System.out.println("ID: " + profesor.getId());
+                System.out.println("NC: "+ profesor.getNumControl());
+                System.out.println("Nombre: " + profesor.getNombre());
+                System.out.println("Apellido: " + profesor.getPrimerApellido());
+                System.out.println("Ciudad: " + profesor.getCiudad());
+                System.out.println("Fecha de registro: "+ profesor.getFechaRegistro());
+                return; 
+            }
+        }
+        System.out.println("No se encontró ningún profesor con ese numero de control en la carrera.");
+    }
+
+
+    public static void modificarMaestro(CarreraEnum carreraEnum) {
+        @SuppressWarnings("resource")
+        Scanner leerNumeros = new Scanner(System.in);
+        @SuppressWarnings("resource")
+        Scanner leerCadenas = new Scanner(System.in);
+
+        System.out.println("Ingrese el NC del Alumno a modificar: ");
+        String ncProfesorModif = leerCadenas.nextLine();
+        boolean profesorEncontrado = false;
+        Profesor profesorModificado = null;
+    
+        
+        for (Persona usuario : Escuela.usuarios.get(Rol.Profesor)) {
+            
+            if (usuario instanceof Profesor && ((Profesor)usuario).getNumControl() == ncProfesorModif && ((Profesor)usuario).getCarreraEnum().equals(carreraEnum)) {
+                Profesor profesor = (Profesor) usuario;
+                if (profesor.getNumControl() == ncProfesorModif) {
+                    profesorEncontrado = true;
+                    profesorModificado = profesor;
+                    break; 
+                }
+            }
+        }
+    
+        if (profesorEncontrado) {
+            System.out.println("Elija la opción que desea modificar: ");
+            System.out.println("1.- Nombre ");
+            System.out.println("2.- Apellido ");
+            System.out.println("3.- Segundo apellido ");
+            System.out.println("4.- Nombre de usuario");
+            System.out.println("5.- Contraseña ");
+            int opcion = leerNumeros.nextInt();
+    
+            switch (opcion) {
+                case 1:
+                    System.out.println("Ingrese el nombre: ");
+                    String nuevoNombre = leerCadenas.nextLine();
+                    profesorModificado.setNombre(nuevoNombre);
+                    break;
+                case 2:
+                    System.out.println("Ingrese el apellido: ");
+                    String nuevoApellido = leerCadenas.nextLine();
+                    profesorModificado.setPrimerApellido(nuevoApellido);
+                    break;
+                case 3:
+                    System.out.println("Ingrese el segundo apellido: ");
+                    String nuevoApellido2 = leerCadenas.nextLine();
+                    profesorModificado.setSegundoApellido(nuevoApellido2);
+                    break;
+                case 4:
+                    profesorModificado.setNombreUsuario(DatosComun.obtenerNombreUsuario());
+                    break;
+                case 5:
+                    System.out.println("Ingrese la contraseña: ");
+                    String nuevaContra = leerCadenas.nextLine();
+                    profesorModificado.setContra(nuevaContra);
+                    break;
+                default:
+                    System.out.println("Opción no válida.");
+                    break;
+            }
+    
+        } else {
+            System.out.println("No se ha encontrado profesor con ese NC...");
+        }
+    }
+
+    public static void eliminarMaestro(CarreraEnum carreraEnum){
+        @SuppressWarnings("resource")
+        Scanner leerCadenas = new Scanner(System.in);
+
+        System.out.println("Ingrese el NC del maestro para eliminar: ");
+        String ncProfesorEliminar = leerCadenas.nextLine();
+        Boolean respuestaCorrecta = false;
+        Profesor profesorEncontrado=null;
+
+        for (Persona usuario : Escuela.usuarios.get(Rol.Profesor)) {
+            Profesor profesor = (Profesor) usuario;
+            if (usuario instanceof Profesor && ((Profesor)usuario).getNumControl() == ncProfesorEliminar && ((Profesor)usuario).getCarreraEnum().equals(carreraEnum)) {
+                respuestaCorrecta = true;
+                profesorEncontrado=profesor;                
+            }
+        }
+
+        if (respuestaCorrecta) {
+            System.out.println("\nProfesor eliminado.\n");
+                Escuela.usuarios.get(Rol.Profesor).remove(profesorEncontrado);
+        }else{
+            System.out.println("No pudo eliminarse al profesor.");
+        }
+                
     }
 }

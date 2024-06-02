@@ -5,6 +5,7 @@ import java.util.Scanner;
 import usuario.Alumno;
 import usuario.Coordinador;
 import usuario.Profesor;
+import usuario.utils.CarreraEnum;
 import usuario.utils.UsuarioEnSesion;
 
 public class MenuCoordinador {
@@ -18,7 +19,7 @@ public class MenuCoordinador {
 
         do{
             System.out.println("+---------------------------------+");
-            System.out.println("|   MENÚ COORDINADOR ISC MINDBOX  |");
+            System.out.println("|   MENU COORDINADOR ISC MINDBOX  |");
             System.out.println("+---------------------------------+");
             System.out.println("|   OPCIÓN   |    DESCRIPCION     |");
             System.out.println("+---------------------------------+");
@@ -84,11 +85,11 @@ public class MenuCoordinador {
 
                     switch(opcionModificar){
                         case 1:
-                            System.out.println("met modificar cliente");
+                            Alumno.modificarAlumno(coordinador.getCarreraEnum());
                             break;
 
                         case 2:
-                            System.out.println("met modificar maestro");
+                            Profesor.modificarMaestro(coordinador.getCarreraEnum());
                             break;
 
                         case 3:
@@ -148,11 +149,11 @@ public class MenuCoordinador {
                     case 1:
                         switch (consultar) {
                             case 1:
-                                System.out.println("met mostrar todos los alumnos");
+                                Alumno.mostrarInformacionTodosAlumnos(coordinador.getCarreraEnum());
                                 break;
 
                             case 2:
-                                System.out.println("met consultar alumno por nc");
+                                Alumno.consultarAlumnoPorNC(coordinador.getCarreraEnum());
                                 break;
 
                             case 3:
@@ -167,11 +168,11 @@ public class MenuCoordinador {
                     case 2:
                     switch (consultar) {
                         case 1:
-                            System.out.println("met consultar todos los maestros");
+                            Profesor.mostrarInformacionTodosMaestros(coordinador.getCarreraEnum());
                             break;
 
                         case 2:
-                            System.out.println("met consultar maestros por nc");
+                            Profesor.consultarMaestroPorNC(coordinador.getCarreraEnum());
                             break;
 
                         case 3:
@@ -232,11 +233,11 @@ public class MenuCoordinador {
 
                     switch(opcionEliminar){
                         case 1:
-                            System.out.println("met eliminar alumnos");
+                            Alumno.eliminarAlumno(coordinador.getCarreraEnum());
                             break;
 
                         case 2:
-                            System.out.println("met eliminar maestros");
+                            Profesor.eliminarMaestro(coordinador.getCarreraEnum());
                             break;
 
                         case 3:

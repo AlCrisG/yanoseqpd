@@ -1,11 +1,8 @@
-import escuela.menu.MenuAlumno;
-import escuela.utils.SemestreEnum;
-import usuario.utils.CarreraEnum;
-
+import escuela.EscuelaSistema;
 public class Main{
 
     public static void main(String[] args) {        
-        MenuAlumno.mostrarMaterias(CarreraEnum.Sistemas, SemestreEnum.II);
-
+        EscuelaSistema escuela = new EscuelaSistema();
+        escuela.iniciarSesionSistema();
     }
 }
