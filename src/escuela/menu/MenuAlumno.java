@@ -2,6 +2,10 @@ package escuela.menu;
 
 import java.util.Scanner;
 
+import escuela.Calificacion;
+import escuela.Materia;
+import usuario.Persona;
+import usuario.Profesor;
 import usuario.utils.CarreraEnum;
 import escuela.utils.SemestreEnum;
 
@@ -223,44 +227,54 @@ public class MenuAlumno {
         }while(true);
     }
 
-public static void mostrarMaterias(CarreraEnum carrera, SemestreEnum semestre) {  
-    if(carrera == CarreraEnum.Sistemas){
-        System.out.println("+-------------------------+");
-        System.out.println("|      MENÚ MATERIAS      |");
-        System.out.println("|   " + carrera + " - Semestre " + semestre + "   |");
-        System.out.println("+-------------------------+");                    
-        System.out.println("| OPCIÓN | DESCRIPCIÓN    |");
-        System.out.println("+-------------------------+");
-        System.out.println("|   1    | Programación I |");
-        System.out.println("|   2    | Probabilidad I |");
-    }
-
-    System.out.println("|   3    | Cálculo "+ semestre + "      |");
-    System.out.println("|   4    | Regresar       |");
-    System.out.println("+------------------------+");
-    System.out.print("Elige una opción: ");
-    int opcionMateria = leerNum.nextInt();
-
-        switch(opcionMateria){
-            case 1:
-                System.out.println("met agregar");
-                break;
-            
-            case 2:
-                System.out.println("met agregar maestro");
-                break;
-
-            case 3:
-                System.out.println("met agregar una calificacion");
-                break;
-
-            case 4:
-                break;
-            
-            default:
-                System.out.println("Opción no válida");
-                break;
+    public static void mostrarMaterias(CarreraEnum carrera, SemestreEnum semestre) {  
+        if(carrera == CarreraEnum.Sistemas){
+            System.out.println("+-------------------------+");
+            System.out.println("|      MENÚ MATERIAS      |");
+            System.out.println("|   " + carrera + " - Semestre " + semestre + "   |");
+            System.out.println("+-------------------------+");                    
+            System.out.println("| OPCIÓN | DESCRIPCIÓN    |");
+            System.out.println("+-------------------------+");
+            System.out.println("|   1    | Programación " + semestre + "      |");
+            System.out.println("|   2    | Probabilidad " + semestre + "      |");
         }
-}
 
-}
+        System.out.println("|   3    | Cálculo " + semestre + "      |");
+        System.out.println("|   4    | Regresar       |");
+        System.out.println("+------------------------+");
+        System.out.print("Elige una opción: ");
+        int opcionMateria = leerNum.nextInt();
+
+            switch(opcionMateria){
+                case 1:
+                    mostrarCalificación(,)
+                    break;
+                
+                case 2:
+                    System.out.println("met agregar maestro");
+                    break;
+
+                case 3:
+                    System.out.println("met agregar una calificacion");
+                    break;
+
+                case 4:
+                    break;
+                
+                default:
+                    System.out.println("Opción no válida");
+                    break;
+            }
+        }
+
+        public static void mostrarCalificación(Materia materia, Profesor profesor, SemestreEnum semestre, Calificacion calificacion) {
+
+            System.out.println("+----------------------------------+");
+            System.out.println("|        " + materia + " " + semestre + "           |");
+            System.out.println("+----------------------------------+");
+            System.out.println("| Profesor: " + profesor.getNombreCompleto() + "       |");
+            System.out.println("+----------------------------------+");
+            System.out.println("| Calificación final: " + calificacion.getCalificacion() + "     |");
+            System.out.println("+----------------------------------+");                       
+        }
+    }

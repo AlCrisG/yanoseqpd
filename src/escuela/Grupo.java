@@ -44,6 +44,8 @@ public class Grupo {
         return semestre;
     }
 
+    
+
     public void agregarAlumno(Alumno alumno){
         if (alumnos.size()<20) {
             alumnos.add(alumno);
@@ -51,5 +53,15 @@ public class Grupo {
             System.out.println("El grupo esta lleno");
         }
     }
-    
+
+    public String materiasGrupo(){
+        if(materias == null){
+            return "";
+        }
+        for (Materia materia : materias){
+            System.out.println(materia.getNombre());
+            System.out.println();
+        }
+        return "";
+    }
 }

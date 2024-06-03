@@ -21,8 +21,6 @@ public class Coordinador extends Persona{
         this.carrera = carrera;
     }
 
-    
-
     public String getRfc (){
         return rfc;
     }
@@ -38,8 +36,6 @@ public class Coordinador extends Persona{
     public CarreraEnum getCarreraEnum(){
         return carrera;
     }
-
-    
 
     public void setSalario(double salario) {
         this.salario = salario;
@@ -87,5 +83,4 @@ public class Coordinador extends Persona{
         }
 
     }
-
 }

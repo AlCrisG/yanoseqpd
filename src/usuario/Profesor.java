@@ -31,7 +31,6 @@ public class Profesor extends Persona{
         return carrera;
     }
 
-    
 
     @SuppressWarnings("static-access")
 	public void setSalario(double salario) {
@@ -122,7 +121,7 @@ public class Profesor extends Persona{
     }
 
 
-    public static void consultarMaestroPorNC( CarreraEnum carreraEnum) {
+    public static void consultarMaestroPorNC(CarreraEnum carreraEnum) {
         @SuppressWarnings("resource")
         Scanner leerCadenas = new Scanner(System.in);
 
