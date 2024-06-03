@@ -227,7 +227,18 @@ public class MenuAlumno {
         }while(true);
     }
 
-    public static void mostrarMaterias(CarreraEnum carrera, SemestreEnum semestre) {  
+    public static void mostrarCalificacion(Materia materia, Profesor profesor, SemestreEnum semestre, Calificacion calificacion) {
+
+        System.out.println("+----------------------------------+");
+        System.out.println("|        " + materia + " " + semestre + "           |");
+        System.out.println("+----------------------------------+");
+        System.out.println("| Profesor: " + profesor.getNombreCompleto() + "       |");
+        System.out.println("+----------------------------------+");
+        System.out.println("| Calificación final: " + calificacion.getCalificacion() + "     |");
+        System.out.println("+----------------------------------+");                       
+    }
+
+    public static void mostrarMaterias(CarreraEnum carrera, Materia materia, Profesor profesor, SemestreEnum semestre, Calificacion calificacion) {  
         if(carrera == CarreraEnum.Sistemas){
             System.out.println("+-------------------------+");
             System.out.println("|      MENÚ MATERIAS      |");
@@ -247,15 +258,15 @@ public class MenuAlumno {
 
             switch(opcionMateria){
                 case 1:
-                    mostrarCalificación(,)
+                    mostrarCalificacion(materia, profesor, semestre, calificacion);
                     break;
                 
                 case 2:
-                    System.out.println("met agregar maestro");
+                mostrarCalificacion(materia, profesor, semestre, calificacion);
                     break;
 
                 case 3:
-                    System.out.println("met agregar una calificacion");
+                mostrarCalificacion(materia, profesor, semestre, calificacion);
                     break;
 
                 case 4:
@@ -267,14 +278,4 @@ public class MenuAlumno {
             }
         }
 
-        public static void mostrarCalificación(Materia materia, Profesor profesor, SemestreEnum semestre, Calificacion calificacion) {
-
-            System.out.println("+----------------------------------+");
-            System.out.println("|        " + materia + " " + semestre + "           |");
-            System.out.println("+----------------------------------+");
-            System.out.println("| Profesor: " + profesor.getNombreCompleto() + "       |");
-            System.out.println("+----------------------------------+");
-            System.out.println("| Calificación final: " + calificacion.getCalificacion() + "     |");
-            System.out.println("+----------------------------------+");                       
-        }
     }

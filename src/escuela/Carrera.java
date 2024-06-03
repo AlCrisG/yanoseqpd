@@ -18,8 +18,7 @@ public class Carrera{
 
     
 
-    public Carrera(int id, CarreraEnum nombreCarrera, int cantidadGrupos, int cantidadAlumnos, int cantidadMaterias,
-            LocalDate fechaCreacion, Coordinador coordinador) {
+    public Carrera(int id, CarreraEnum nombreCarrera, int cantidadGrupos, int cantidadAlumnos, int cantidadMaterias,LocalDate fechaCreacion, Coordinador coordinador) {
         this.id = id;
         this.nombreCarrera = nombreCarrera;
         this.cantidadGrupos = cantidadGrupos;
